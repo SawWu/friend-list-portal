@@ -21,7 +21,6 @@ export default class Item extends Component{
         this.showList(this.state.show);
     }
     shouldComponentUpdate(nextProps,nextState){
-        console.log(nextProps,nextState);
         if(this.state.show !=  nextProps.show){
             this.setState({
                 show: nextProps.show

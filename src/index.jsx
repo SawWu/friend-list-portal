@@ -35,7 +35,6 @@ class App extends Component{
         this.setState({
             showList
         });
-        console.log(showList);
     };
     render() {
         return (
