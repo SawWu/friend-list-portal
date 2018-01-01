@@ -1,2 +1,4 @@
-# friend-list-portal
-好友列表的展开与收缩
+# todo-list-protal
+好友列表展开与收缩
+
+技术栈  react
