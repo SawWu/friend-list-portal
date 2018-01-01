@@ -9,6 +9,17 @@ export default class Item extends Component{
         };
         this.changeList = this.changeList.bind(this);
     }
+    showList(show){
+        let list=this.refs.list;
+        if(show){
+            list.style.height = list.scrollHeight + "px";
+        } else {
+            list.style.height = 0;
+        }
+    }
+    componentDidMount(){
+        this.showList(this.state.show);
+    }
     shouldComponentUpdate(nextProps,nextState){
         console.log(nextProps,nextState);
         if(this.state.show !=  nextProps.show){
@@ -16,7 +27,10 @@ export default class Item extends Component{
                 show: nextProps.show
             });
         }
-        return true;
+        if(this.state.show != nextState.show){
+            this.showList(nextState.show);
+        }
+        return false;
     }
     changeList(){
         let show=!this.state.show;
@@ -31,7 +45,10 @@ export default class Item extends Component{
         return (
             <div>
                 <h2 className="title" onClick={this.changeList}>{this.props.data.name}</h2>
-                {this.state.show? <List list={this.props.data.list}/> : ''}
+                <div className="listWrap" ref="list">
+                    <List list={this.props.data.list}/>
+                </div>
+
             </div>
         )
     }
